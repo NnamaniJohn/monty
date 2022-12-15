@@ -103,12 +103,12 @@ void pall_stack(stack_t **stack, unsigned int line_number)
 	}
 }
 
- /**
-  * pint_stack - prints the value at the top of the stack
-  * @stack: stack
-  * @line_number: line
-  * Return: void pointer
-  */
+/**
+ * pint_stack - prints the value at the top of the stack
+ * @stack: stack
+ * @line_number: line
+ * Return: void pointer
+ */
 
 void pint_stack(stack_t **stack, unsigned int line_number)
 {
@@ -119,16 +119,16 @@ void pint_stack(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
-	}		
+	}
 }
 
 
- /**
-  * pop_stack - removes the top element of the stack
-  * @stack: stack
-  * @line_number: line
-  * Return: void pointer
-  */
+/**
+ * pop_stack - removes the top element of the stack
+ * @stack: stack
+ * @line_number: line
+ * Return: void pointer
+ */
 
 void pop_stack(stack_t **stack, unsigned int line_number)
 {
@@ -147,5 +147,5 @@ void pop_stack(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
-	}		
+	}
 }
