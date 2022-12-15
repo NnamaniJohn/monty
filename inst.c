@@ -12,6 +12,7 @@ void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"push", push_val},
 		{"pall", pall_stack},
 		{"pint", pint_stack},
+		{"pop", pop_stack},
 		{NULL, NULL}
 	};
 
@@ -105,12 +106,30 @@ void pall_stack(stack_t **stack, unsigned int line_number)
 
 void pint_stack(stack_t **stack, unsigned int line_number)
 {
-	if (*stack)
+	if (stack && *stack)
 		printf("%d\n", (*stack)->n);
 	else
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
-	}
-		
+	}		
+}
+
+
+ /**
+  * pop_stack - removes the top element of the stack
+  * @stack: stack
+  * @line_number: line
+  * Return: void pointer
+  */
+
+void pop_stack(stack_t **stack, unsigned int line_number)
+{
+	if (stack && *stack)
+		*stack = (*stack)->next;
+	else
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}		
 }
