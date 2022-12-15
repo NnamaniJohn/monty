@@ -71,14 +71,13 @@ void pall_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
+	tmp = *stack;
 	if (*stack || line_number) 
 	{
-		while(*stack)
+		while(tmp)
 		{
-			printf("%d\n", (*stack)->n);
-			tmp = *stack;
-			*stack = (*stack)->next;
-			free(tmp);
+			printf("%d\n", (tmp)->n);
+			tmp = (tmp)->next;
 		}
 	}
 	return;
