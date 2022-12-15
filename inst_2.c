@@ -109,15 +109,24 @@ void div_stack(stack_t **stack, unsigned int line_number)
 
 	if (*stack && (*stack)->next)
 	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		(*stack)->prev = NULL;
-		(*stack)->n /= tmp->n;
-		free(tmp);
+		if ((*stack)->n == 0)
+		{
+			fprintf(stderr, "L%d: division by zero\n", line_number);
+			free_stack(stack);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			tmp = *stack;
+			*stack = (*stack)->next;
+			(*stack)->prev = NULL;
+			(*stack)->n /= tmp->n;
+			free(tmp);
+		}
 	}
 	else
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
