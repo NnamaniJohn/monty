@@ -54,3 +54,17 @@ void add_stack(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * nop_stack - does nothing
+ * @stack: stack
+ * @line_number: line
+ * Return: void pointer
+ */
+
+void nop_stack(stack_t **stack, unsigned int line_number)
+{
+	if (stack && line_number)
+	{
+	}
+}
