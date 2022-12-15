@@ -73,7 +73,7 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 void pchar_stack(stack_t **stack, unsigned int line_number)
 {
 	if (stack && *stack)
-		if ((*stack)->n >= 0 && (*stack)->n <= 177)
+		if ((*stack)->n >= 32 && (*stack)->n <= 127)
 			printf("%c\n", (*stack)->n);
 		else
 		{
