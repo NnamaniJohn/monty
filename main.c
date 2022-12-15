@@ -41,6 +41,8 @@ void execute(FILE *fp)
 		if ((line)[read - 1] == '\n')
 			(line)[read - 1] = '\0';
 		opcode = strtok(line, " ");
+		if (opcode[0] == '#')
+			opcode = "nop";
 		if (opcode)
 		{
 			inst = get_inst(opcode);
