@@ -18,6 +18,7 @@ void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"nop", nop_stack},
 		{"sub", sub_stack},
 		{"div", div_stack},
+		{"mul", mul_stack},
 		{NULL, NULL}
 	};
 
