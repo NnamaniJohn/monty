@@ -14,6 +14,7 @@ void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"pint", pint_stack},
 		{"pop", pop_stack},
 		{"swap", swap_stack},
+		{"add", add_stack},
 		{NULL, NULL}
 	};
 
