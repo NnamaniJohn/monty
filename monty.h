@@ -47,6 +47,7 @@ void push_val(stack_t **stack, unsigned int line_number);
 void pall_stack(stack_t **stack, unsigned int line_number);
 void pint_stack(stack_t **stack, unsigned int line_number);
 void pop_stack(stack_t **stack, unsigned int line_number);
+void swap_stack(stack_t **stack, unsigned int line_number);
 
 char *getarg(unsigned int line_number);
 
