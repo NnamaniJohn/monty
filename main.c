@@ -48,7 +48,7 @@ void execute(FILE *fp)
 				inst(&stack, line_number);
 			else
 			{
-				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, filename);
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 				free_stack(&stack);
 				exit(EXIT_FAILURE);
 			}
