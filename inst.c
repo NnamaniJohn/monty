@@ -11,6 +11,7 @@ void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 	instruction_t funcs[] = {
 		{"push", push_val},
 		{"pall", pall_stack},
+		{"pint", pint_stack},
 		{NULL, NULL}
 	};
 
@@ -93,4 +94,23 @@ void pall_stack(stack_t **stack, unsigned int line_number)
 			tmp = (tmp)->next;
 		}
 	}
+}
+
+ /**
+  * pint_stack - prints the value at the top of the stack
+  * @stack: stack
+  * @line_number: line
+  * Return: void pointer
+  */
+
+void pint_stack(stack_t **stack, unsigned int line_number)
+{
+	if (*stack)
+		printf("%d\n", (*stack)->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+		
 }
