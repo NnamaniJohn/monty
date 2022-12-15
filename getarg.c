@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 char *getarg(unsigned int line_number)
 {
