@@ -125,11 +125,15 @@ void pint_stack(stack_t **stack, unsigned int line_number)
 
 void pop_stack(stack_t **stack, unsigned int line_number)
 {
+	stack_t *tmp;
+
 	if (stack && *stack)
 	{
+		tmp = *stack;
 		*stack = (*stack)->next;
 		if (*stack)
 			(*stack)->prev = NULL;
+		free(tmp);
 	}
 	else
 	{
