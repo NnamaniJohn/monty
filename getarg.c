@@ -39,6 +39,8 @@ char *getarg(unsigned int line_number)
 				if (!ret)
 				{
 					fprintf(stderr, "Error: malloc failed\n");
+					if (line)
+						free(line);
 					exit(EXIT_FAILURE);
 				}
 				for (i = 0; arg[i]; i++)

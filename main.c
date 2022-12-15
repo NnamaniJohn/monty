@@ -2,6 +2,18 @@
 
 char *filename = NULL;
 
+void free_stack(stack_t **stack)
+{	
+	stack_t *tmp;
+
+	while (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
+	}
+}
+
 /**
  * execute - run opcode
  * @fp: file descriptor
@@ -17,7 +29,6 @@ void execute(FILE *fp)
 	char *opcode;
 	void (*inst)(stack_t **stack, unsigned int line_number);
 	stack_t *stack = NULL;
-	stack_t *tmp;
 
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
@@ -32,6 +43,7 @@ void execute(FILE *fp)
 			else
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, filename);
+				free_stack(&stack);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -39,13 +51,7 @@ void execute(FILE *fp)
 		line_number++;
 	}
 
-	while (stack)
-	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
-	}
-
+	free_stack(&stack);
 	if (line)
 		free(line);
 }

@@ -42,7 +42,7 @@ typedef struct instruction_s
 extern char *filename;
 
 void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number);
-
+void free_stack(stack_t **stack);
 void push_val(stack_t **stack, unsigned int line_number);
 void pall_stack(stack_t **stack, unsigned int line_number);
 void pint_stack(stack_t **stack, unsigned int line_number);

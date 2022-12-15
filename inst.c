@@ -43,6 +43,7 @@ void push_val(stack_t **stack, unsigned int line_number)
 	if (!arg)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	for (j = 0; j < (int) strlen(arg); j++)
@@ -50,6 +51,7 @@ void push_val(stack_t **stack, unsigned int line_number)
 		if (isdigit(arg[j]) == 0)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -58,6 +60,7 @@ void push_val(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -111,6 +114,7 @@ void pint_stack(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}		
 }
@@ -138,6 +142,7 @@ void pop_stack(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}		
 }
