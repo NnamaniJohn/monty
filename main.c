@@ -2,6 +2,12 @@
 
 char *filename = NULL;
 
+/**
+ * execute - run opcode
+ * @fp: file descriptor
+ * Return: void
+ */
+
 void execute(FILE *fp)
 {
 	char *line = NULL;
@@ -43,6 +49,13 @@ void execute(FILE *fp)
 	if (line)
 		free(line);
 }
+
+/**
+ * main - main program
+ * @ac: argument count
+ * @av: argument vector
+ * Return: int
+ */
 
 int main(int ac, char *av[])
 {

@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * get_inst - get instruction to execute
+ * @opcode: opcode
+ * Return: void pointer
+ */
+
 void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t funcs[] = {
@@ -18,6 +24,13 @@ void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 	return (funcs[i].f);
 }
 
+/**
+ * push_val - add value to stack
+ * @stack: stack
+ * @line_number: line
+ * Return: void pointer
+ */
+
 void push_val(stack_t **stack, unsigned int line_number)
 {
 	char *arg;
@@ -27,8 +40,8 @@ void push_val(stack_t **stack, unsigned int line_number)
 	arg = getarg(line_number);
 	if (!arg)
 	{
-	        fprintf(stderr, "L%d: usage: push integer\n", line_number);
-	        exit(EXIT_FAILURE);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	for (j = 0; j < (int) strlen(arg); j++)
 	{
@@ -46,39 +59,38 @@ void push_val(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
+	new->n = atoi(arg);
+	new->prev = NULL;
 	if (*stack == NULL)
-	{
-		new->n = atoi(arg);
 		new->next = NULL;
-		new->prev = NULL;
-		*stack = new;
-	}
 	else
 	{
-		new->n = atoi(arg);
 		(*stack)->prev = new;
 		new->next = *stack;
-		new->prev = NULL;
-		*stack = new;
 	}
+	*stack = new;
 
 	free(arg);
-	return;
 }
 
+/**
+ * pall_stack - print stack
+ * @stack: stack
+ * @line_number: line
+ * Return: void pointer
+ */
 
 void pall_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
 	tmp = *stack;
-	if (*stack || line_number) 
+	if (*stack || line_number)
 	{
-		while(tmp)
+		while (tmp)
 		{
 			printf("%d\n", (tmp)->n);
 			tmp = (tmp)->next;
 		}
 	}
-	return;
 }
