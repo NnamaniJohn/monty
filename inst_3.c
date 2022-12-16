@@ -74,7 +74,7 @@ void pchar_stack(stack_t **stack, unsigned int line_number)
 {
 	if (stack && *stack)
 	{
-		if ((*stack)->n >= 32 && (*stack)->n <= 127)
+		if ((*stack)->n > 32 && (*stack)->n < 127)
 			printf("%c\n", (*stack)->n);
 		else
 		{
@@ -103,11 +103,11 @@ void pstr_stack(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	tmp = *stack;
-	if (stack && line_number)
+	if (stack || line_number)
 	{
 		while (tmp)
 		{
-			if (tmp->n >= 32 && tmp->n <= 127)
+			if (tmp->n > 32 && tmp->n < 127)
 			{
 					printf("%c", (tmp)->n);
 					tmp = (tmp)->next;
