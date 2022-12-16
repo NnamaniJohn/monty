@@ -21,6 +21,7 @@ void (*get_inst(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"mul", mul_stack},
 		{"mod", mod_stack},
 		{"pchar", pchar_stack},
+		{"pstr", pstr_stack},
 		{NULL, NULL}
 	};
 

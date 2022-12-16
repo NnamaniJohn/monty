@@ -55,6 +55,7 @@ void div_stack(stack_t **stack, unsigned int line_number);
 void mul_stack(stack_t **stack, unsigned int line_number);
 void mod_stack(stack_t **stack, unsigned int line_number);
 void pchar_stack(stack_t **stack, unsigned int line_number);
+void pstr_stack(stack_t **stack, unsigned int line_number);
 
 char *getarg(unsigned int line_number);
 

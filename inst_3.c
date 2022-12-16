@@ -73,6 +73,7 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 void pchar_stack(stack_t **stack, unsigned int line_number)
 {
 	if (stack && *stack)
+	{
 		if ((*stack)->n >= 32 && (*stack)->n <= 127)
 			printf("%c\n", (*stack)->n);
 		else
@@ -81,10 +82,39 @@ void pchar_stack(stack_t **stack, unsigned int line_number)
 			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
+	}
 	else
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * pstr_stack - prints string at the top of the stack
+ * @stack: stack
+ * @line_number: line
+ * Return: void pointer
+ */
+
+void pstr_stack(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	tmp = *stack;
+	if (stack && line_number)
+	{
+		while (tmp)
+		{
+			if (tmp->n >= 32 && tmp->n <= 127)
+			{
+					printf("%c", (tmp)->n);
+					tmp = (tmp)->next;
+			}
+			else
+				break;
+		}
+		printf("\n");
 	}
 }
